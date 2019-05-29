@@ -1,4 +1,8 @@
-version: 2.0
+version: 2.1
+
+orbs:
+  cypress: cypress-io/cypress@1.7.0
+  
 jobs:
  build:
    # pre-built images: https://circleci.com/docs/2.0/circleci-images/
@@ -20,3 +24,8 @@ jobs:
          name: Running in a Unique Container
          command: |
            node -v
+
+workflows:
+  build:
+    jobs:
+      - cypress/run
