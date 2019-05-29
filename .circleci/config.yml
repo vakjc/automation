@@ -29,3 +29,4 @@ workflows:
   build:
     jobs:
       - cypress/run
+          executor: cypress/base-8
