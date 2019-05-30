@@ -6,7 +6,7 @@
   "chromeWebSecurity": false,
   "reporter": "junit",
   "reporterOptions": {
-    "mochaFile": "D:\\dead_link_check-[hash].xml"
+    "mochaFile": "/root/project/test-results/result-[hash].xml"
   },
   "projectId": "mz8c6m",
   "env":{
