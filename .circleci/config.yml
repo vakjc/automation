@@ -6,7 +6,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install
       - cypress/run:
-          requires: 
-            - cypress/install
+          start: npm start
