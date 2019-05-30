@@ -9,9 +9,6 @@ jobs:
     - restore_cache:
         keys:
         - cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
-    - store_artifacts:
-        path: /test-results
-        destination: run
     - run:
         name: Check if package-lock.json exists
         command: |
@@ -43,6 +40,8 @@ jobs:
     - run:
         name: Run Cypress tests
         command: "ls;npx cypress run \\\n   \\\n   \\\n  "
+    - store_artifacts:
+        path: /test-results
 
 workflows:
   build:
