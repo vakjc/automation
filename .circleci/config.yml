@@ -10,7 +10,6 @@ jobs:
      - run:
          name: The First Step
          command: |
-           npm init
            npm install cypress --save-dev
            
      - run:
