@@ -6,7 +6,4 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run:
-          start: npm start
-      - run:
-          command: "npm init"
+      - cypress/run
