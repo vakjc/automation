@@ -9,6 +9,9 @@ jobs:
     - restore_cache:
         keys:
         - cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+    - store_artifacts:
+        path: /test-results
+        destination: run
     - run:
         name: Check if package-lock.json exists
         command: |
