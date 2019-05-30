@@ -40,6 +40,9 @@ jobs:
     - run:
         name: Run Cypress tests
         command: "ls;npx cypress run \\\n   \\\n   \\\n  "
+    - store_test_results:
+        path: test-results
+
 workflows:
   build:
     jobs:
