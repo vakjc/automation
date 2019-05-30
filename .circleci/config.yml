@@ -23,8 +23,8 @@ jobs:
          command: |
            node -v
        
-orbs:
-  cypress: cypress-io/cypress@1
+#orbs:
+#  cypress: cypress-io/cypress@1
 
 workflows:
   build:
