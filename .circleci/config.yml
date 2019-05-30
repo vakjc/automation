@@ -1,31 +1,44 @@
-version: 2.1
-  
+version: 2
 jobs:
- build:
-   # pre-built images: https://circleci.com/docs/2.0/circleci-images/
-   docker:
-     - image: circleci/node:10-browsers
-   steps:
-     - checkout
-     - run:
-         name: The First Step
-         command: |
-           ls cypress/index.js
-           
-     - run:
-         name: Code Has Arrived
-         command: |
-           ls -al
-           echo '^^^That should look familiar^^^'
-     - run:
-         name: Running in a Unique Container
-         command: |
-           node -v
-       
-orbs:
-  cypress: cypress-io/cypress@1
-
+  cypress/run:
+    docker:
+    - image: cypress/base:10
+    parallelism: 1
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+    - run:
+        name: Check if package-lock.json exists
+        command: |
+          if [ ! -e ./package-lock.json ]; then
+            echo "The Cypress orb uses 'npm ci' to install 'node_modules', which requires a 'package-lock.json'."
+            echo "A 'package-lock.json' file was not found. Please run 'npm install' in your project,"
+            echo "and commit 'package-lock.json' to your repo."
+            exit 1
+          fi
+    - run:
+        name: Npm CI
+        command: npm ci
+    - run:
+        command: npm install cypress --save-dev
+    - run:
+        command: npx cypress verify
+    - save_cache:
+        key: cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+        paths:
+        - ~/.npm
+        - ~/.cache
+    - persist_to_workspace:
+        root: ~/
+        paths:
+        - project
+        - .cache/Cypress
+    - run:
+        name: Run Cypress tests
+        command: "npx cypress run \\\n   \\\n   \\\n  "
 workflows:
   build:
     jobs:
-      - cypress/run
+    - cypress/run
