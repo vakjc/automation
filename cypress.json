@@ -1,0 +1,19 @@
+{
+  "requestTimeout": 30000,
+  "numTestsKeptInMemory": 0,
+  "responseTimeout": 50000,
+  "pageLoadTimeout": 100000,
+  "chromeWebSecurity": false,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "D:\\dead_link_check-[hash].xml"
+  },
+  "projectId": "mz8c6m",
+  "env":{
+    "app_host": "app.jumpcut.com", 
+    "host": "jumpcut.com",
+    "app_host_demo": "eng-417.app.demo.jumpcut.com",
+    "host_demo": "eng-417.demo.jumpcut.com"
+  },
+  "blacklistHosts": "a2jwg9grws6jz2.iot.us-east-1.amazonaws.com"
+}
