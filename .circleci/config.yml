@@ -25,6 +25,8 @@ jobs:
         command: npm install cypress --save-dev
     - run:
         command: npx cypress verify
+    - run:
+        command: ls
     - save_cache:
         key: cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
         paths:
@@ -37,7 +39,7 @@ jobs:
         - .cache/Cypress
     - run:
         name: Run Cypress tests
-        command: "npx cypress run \\\n   \\\n   \\\n  "
+        command: "ls;npx cypress run \\\n   \\\n   \\\n  "
 workflows:
   build:
     jobs:
