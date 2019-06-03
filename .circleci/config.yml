@@ -46,11 +46,9 @@ jobs:
         path: /root/project/test-results/
 
 workflows:
-  build:
-    jobs:
-    - cypress/run
   triggers:
     - schedule:
-        cron: "0 0 * * *"
+        cron: "0 * * * *"
+  jobs:
+    - cypress/run
   version: 2
-  
