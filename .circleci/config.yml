@@ -55,10 +55,5 @@ workflows:
               only:
                 - master
     jobs:
-      - cypress/run:
-          requires:
-            - cypress/install
-          parallel: true
-          parallelism: 2
-          group: 2x
+      - cypress/run
   version: 2
