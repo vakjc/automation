@@ -41,7 +41,7 @@ jobs:
         name: Run Cypress tests
         command: "ls;npx cypress run \\\n   \\\n   \\\n  "
     - store_artifacts:
-        path: /root/project/cypress/videos
+        path: /root/project/cypress/screenshots
     - store_test_results:
         path: /root/project/test-results/
 
@@ -55,5 +55,10 @@ workflows:
               only:
                 - master
     jobs:
-      - cypress/run
+      - cypress/run:
+          requires:
+            - cypress/install
+          parallel: true
+          parallelism: 2
+          group: 2x
   version: 2
