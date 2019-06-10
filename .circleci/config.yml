@@ -49,8 +49,7 @@ workflows:
   schedule-workflow:
     triggers:
       - schedule:
-          cron: 
-            - schedule: every 4 hours
+          cron: "0 * * * *"
           filters:
             branches:
               only:
